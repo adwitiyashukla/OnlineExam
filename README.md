@@ -1,231 +1,139 @@
-# 📝 OnlineExam — Online Examination Portal
+# OnlineExam
 
-A full-stack **online quiz / examination web application** for the students and
-teachers of a college, built with **core Java (JSP + Servlets)**, the
-**MVC architecture**, and a **MySQL** database running on **Apache Tomcat**.
+OnlineExam is a small web application where students can give online quizzes and teachers can add the questions for them.
 
-Teachers create subjects and multiple-choice questions; students take **timed
-quizzes**, get **instant, reviewable results**, and every score is saved so
-students, teachers and admins can track performance on dashboards and a
-**leaderboard**.
+The idea is pretty simple. A teacher logs in and adds subjects and multiple-choice questions. A student logs in, picks a subject and attempts a timed quiz. As soon as the quiz is submitted the student gets the score, and every attempt is saved so it can be shown later on the dashboard and on a common leaderboard.
 
-![Java](https://img.shields.io/badge/Java-17-007396?logo=openjdk&logoColor=white)
-![JSP](https://img.shields.io/badge/JSP-Servlets-E76F00)
-![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?logo=mysql&logoColor=white)
-![Tomcat](https://img.shields.io/badge/Apache%20Tomcat-9.0-F8DC75?logo=apachetomcat&logoColor=black)
-![Architecture](https://img.shields.io/badge/Architecture-MVC-2563eb)
+It is written in plain Java using JSP and Servlets, the data is stored in a MySQL database, and it runs on an Apache Tomcat server.
 
----
+## Screenshots
 
-## 📸 Screenshots
-
-| Landing page | Student dashboard |
+| Home page | Student dashboard |
 |---|---|
-| ![Landing page](screenshots/homepage.png) | ![Student dashboard](screenshots/scorecard.png) |
+| ![Home page](screenshots/homepage.png) | ![Student dashboard](screenshots/scorecard.png) |
 
-| Choosing a subject | Timed quiz |
+| Choosing a subject | Quiz with the timer |
 |---|---|
-| ![Subject picker](screenshots/subjectchoicepage.png) | ![Timed quiz](screenshots/quiz.png) |
+| ![Choosing a subject](screenshots/subjectchoicepage.png) | ![Quiz with the timer](screenshots/quiz.png) |
 
----
+## What the app does
 
-## ✨ Features
+There are three kinds of users - student, teacher and admin - and each one gets its own section after logging in.
 
-### 👨‍🎓 Student
-- Register and log in securely (salted-hashed passwords).
-- Pick a subject from a dropdown and take a **timed** multiple-choice quiz.
-- Timer **auto-submits** when time runs out (40 seconds per question).
-- **Instant result** with a percentage score ring and a **per-question review**
-  (your answer vs. the correct answer).
-- Full **attempt history** and a personal best-score stat.
+### Student
 
-### 👩‍🏫 Teacher
-- Register / log in to a private teacher area.
-- Create, rename and delete **subjects** you own.
-- Add, edit and delete **questions** (the correct option is chosen by radio, so
-  it always matches one of the four options).
-- See **every student attempt** on your subjects.
+- Register and log in. Passwords are not stored as plain text, they are saved in a hashed form.
+- Pick a subject from a dropdown and start a timed multiple-choice quiz.
+- The quiz has a countdown timer (40 seconds per question) and it submits on its own once the time is over.
+- After submitting, the student sees the score as a percentage and can check which answers were right and which were wrong.
+- A "My Results" page lists all the quizzes the student has attempted so far.
 
-### 🛡️ Administrator
-- System-wide dashboard with live counts of students, teachers, subjects,
-  questions and attempts.
-- Manage (view / delete) all students, teachers and subjects.
-- Inspect every quiz attempt in the system.
+### Teacher
 
-### 🏆 Everyone
-- Public **leaderboard** ranking the top attempts by percentage then raw score.
+- Log in to a separate teacher area.
+- Create, rename and delete their own subjects.
+- Add, edit and delete questions under a subject. The correct answer is chosen with a radio button so it always matches one of the four options.
+- See all the attempts that students have made on their subjects.
 
----
+### Admin
 
-## 🧱 Tech stack
+- A dashboard that shows how many students, teachers, subjects, questions and attempts there are in total.
+- View and delete students, teachers and subjects.
+- See every quiz attempt in the whole system.
 
-| Layer            | Technology                                             |
-|------------------|--------------------------------------------------------|
-| Language         | Java 17                                                |
-| Web / View       | JSP (thin views, HTML-escaped output) + a shared CSS design system |
-| Controller       | Java Servlets (`javax.servlet`, `@WebServlet`)         |
-| Data access      | JDBC + `PreparedStatement` (DAO pattern)               |
-| Database         | MySQL 8                                                 |
-| Server           | Apache Tomcat 9                                         |
-| Access control   | Servlet `@WebFilter` + `HttpSession`                   |
-| Security         | Salted, 100k-iteration SHA-256 password hashing (JDK only) |
+There is also a leaderboard that anyone can open, which lists the top attempts ordered by percentage and then by score.
 
-> No external frameworks or build tools are required — this is deliberately a
-> pure Java / JSP / Servlet / JDBC project.
+## Tools and technologies
 
----
+- Java 17
+- JSP and Servlets, running on Apache Tomcat 9
+- JDBC with prepared statements to talk to the database
+- MySQL 8
+- HTML and CSS for the pages (one stylesheet, no CSS framework)
 
-## 🏗️ Architecture (MVC)
+I kept it to core Java on purpose, without using a big framework like Spring, so that the basic working of Servlets, JSP and JDBC stays clear.
 
-```
-Browser ──HTTP──► Servlet (Controller) ──► DAO ──► MySQL
-                        │                    ▲
-                        ▼                    │
-                   JSP (View)  ◄── Model (JavaBeans)
-```
+## How the project is organised
 
-- **Model** — plain JavaBeans (`Student`, `Teacher`, `Admin`, `Subject`,
-  `Question`, `Result`).
-- **DAO** — one class per table; all SQL lives here behind `PreparedStatement`s.
-- **Controller** — Servlets handle requests, talk to DAOs, and forward to JSPs.
-- **View** — JSPs render data only (no SQL, no business logic).
+I followed the MVC (Model - View - Controller) pattern and split the Java code into packages based on what each part is responsible for:
 
-### 📂 Project structure
+- model - plain Java classes for the data (Student, Teacher, Admin, Subject, Question, Result)
+- dao - the classes that actually run the SQL queries, one class per table
+- controller - the Servlets that receive the requests and decide what to do
+- filter - an AuthFilter that blocks the student, teacher and admin pages unless you are logged in as that kind of user
+- util - small helper classes for password hashing and cleaning up form input
+
+The JSP files are only used to show the pages. They don't contain any SQL or database code, all of that stays inside the DAO classes.
+
+Folder layout:
 
 ```
 OnlineExam/
-├── database.sql                  # schema + demo seed data (run this first)
-├── README.md
-├── src/main/java/
-│   ├── db.properties             # DB URL / user / password (edit me)
-│   └── com/onlineexam/
-│       ├── model/                # JavaBeans
-│       ├── dao/                  # JDBC data-access objects + DBConnection
-│       ├── controller/           # Servlets (16)
-│       ├── filter/               # AuthFilter (session-based access control)
-│       └── util/                 # PasswordUtil, WebUtil
-└── src/main/webapp/
-    ├── index.jsp                 # landing page
-    ├── assets/css/style.css      # design system
-    └── WEB-INF/
-        ├── web.xml
-        ├── lib/                  # ← put the MySQL Connector/J jar here
-        └── views/                # all JSP views (student / teacher / admin)
+  database.sql                 -> run this first to create the database
+  README.md
+  src/main/java/
+    db.properties              -> database url, username and password
+    com/onlineexam/
+      model/
+      dao/
+      controller/
+      filter/
+      util/
+  src/main/webapp/
+    index.jsp                  -> the home page
+    assets/css/style.css
+    WEB-INF/
+      web.xml
+      lib/                     -> put the MySQL driver jar here
+      views/                   -> all the JSP pages
 ```
 
----
+## Database
 
-## 🗃️ Database schema
+The database is called college and it has these tables:
 
-| Table      | Key columns                                                        |
-|------------|-------------------------------------------------------------------|
-| `student`  | id, name, email (unique), password (hashed)                       |
-| `teacher`  | id, name, email (unique), password (hashed)                       |
-| `admin`    | id, email (unique), password (hashed)                             |
-| `subject`  | code (PK), name, teacher_id → teacher                             |
-| `question` | id, subject_code → subject, question_text, option1–4, correct_answer |
-| `result`   | id, student_id → student, subject_code → subject, score, total, attempted_at |
+- student, teacher, admin - the user accounts (email and a hashed password)
+- subject - a subject, linked to the teacher who created it
+- question - a question with its four options and the correct answer, linked to a subject
+- result - one row for each quiz attempt, linked to a student and a subject
 
-Foreign keys use `ON DELETE CASCADE`, so removing a teacher or subject cleanly
-removes its dependent rows.
+The full script that creates everything (along with a bit of sample data) is in database.sql.
 
----
+## How to run it
 
-## 🚀 Getting started
+You will need JDK 17, Apache Tomcat 9, MySQL 8 and an IDE like Eclipse.
 
-### Prerequisites
-- JDK 17
-- Apache Tomcat 9
-- MySQL 8 (running locally)
-- Eclipse IDE for Enterprise Java (or any IDE with a Tomcat runtime)
+1. Create the database by running the SQL script:
 
-### 1. Create the database
-```bash
-mysql -u root -p < database.sql
-```
-This creates the `college` database, all tables, and demo data.
+   ```
+   mysql -u root -p < database.sql
+   ```
 
-### 2. Configure the connection
-Edit `src/main/java/db.properties` if your MySQL user / password differ:
-```properties
-db.url=jdbc:mysql://localhost:3306/college?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-db.user=root
-db.password=YOUR_PASSWORD
-```
+2. Open src/main/java/db.properties and change the username and password if yours are different.
+3. Put the MySQL Connector/J jar inside src/main/webapp/WEB-INF/lib/.
+4. Import the project into Eclipse, add it to a Tomcat 9 server and start it.
+5. Open http://localhost:8080/OnlineExam/ in the browser.
 
-### 3. Add the MySQL driver
-Copy the MySQL Connector/J jar into `src/main/webapp/WEB-INF/lib/`:
-```
-src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.30.jar
-```
-(You already have this jar in your Tomcat `lib/` folder — just copy it in.)
+## Demo accounts
 
-### 4. Run
-Import the project into Eclipse, add it to your Tomcat 9 server, and start it.
-Then open:
-```
-http://localhost:8080/OnlineExam/
-```
+The SQL script already creates these accounts so you can try the app right away:
 
-### 🔑 Demo accounts (created by `database.sql`)
-| Role    | Email                  | Password      |
-|---------|------------------------|---------------|
-| Admin   | `admin@tiet.edu`       | `Admin@123`   |
-| Teacher | `prof.sharma@tiet.edu` | `Teacher@123` |
-| Student | `adwitiya@tiet.edu`        | `Student@123` |
+| Type | Email | Password |
+|---|---|---|
+| Admin | admin@tiet.edu | Admin@123 |
+| Teacher | prof.sharma@tiet.edu | Teacher@123 |
+| Student | adwitiya@tiet.edu | Student@123 |
 
----
+## Things I could add later
 
-## 🧭 Application routes
+- Use a stronger hashing method like bcrypt and add a database connection pool.
+- One time limit for the whole quiz and shuffling the order of the questions.
+- Exporting results to a CSV file or showing some simple charts.
 
-| URL                        | Method | Description                          |
-|----------------------------|--------|--------------------------------------|
-| `/index.jsp`               | GET    | Landing page                         |
-| `/login?role=…`            | GET/POST | Login (student / teacher / admin)  |
-| `/register?role=…`         | GET/POST | Register (student / teacher)       |
-| `/logout`                  | GET    | End session                          |
-| `/leaderboard`             | GET    | Public leaderboard                   |
-| `/student/dashboard`       | GET    | Student home                         |
-| `/student/quiz`            | GET/POST | Pick subject → take quiz → submit  |
-| `/student/results`         | GET    | Student attempt history              |
-| `/teacher/dashboard`       | GET    | Teacher home                         |
-| `/teacher/subjects`        | GET/POST | Manage subjects                    |
-| `/teacher/questions`       | GET/POST | Manage a subject's questions       |
-| `/teacher/results`         | GET    | Attempts on the teacher's subjects   |
-| `/admin/dashboard`         | GET    | Admin stats                          |
-| `/admin/students`          | GET/POST | Manage students                    |
-| `/admin/teachers`          | GET/POST | Manage teachers                    |
-| `/admin/subjects`          | GET/POST | Manage subjects                    |
-| `/admin/results`           | GET    | All attempts                         |
+## License
 
----
+This project is under the MIT License, see the LICENSE file.
 
-## 🔒 Security highlights
-- **Passwords are never stored in plaintext** — salted SHA-256 with 100,000
-  iterations and a constant-time comparison on verify.
-- **SQL injection safe** — every query uses `PreparedStatement`.
-- **XSS safe** — all user-supplied output is HTML-escaped (`WebUtil.escape`).
-- **Access control** — an `AuthFilter` guards `/student/*`, `/teacher/*` and
-  `/admin/*` by session role, and teachers can only edit their own content.
-- **No hard-coded credentials in code** — the database configuration lives in
-  `db.properties`.
+## Author
 
----
-
-## 🌱 Possible future enhancements
-- BCrypt/Argon2 hashing and a connection pool (HikariCP).
-- Question randomisation and configurable per-quiz time limits.
-- CSV export of results and richer analytics charts.
-- REST API + a separate front end.
-
----
-
-## 📄 License
-
-Released under the [MIT License](LICENSE).
-
----
-
-## 👤 Author
-**Adwitiya Shukla** — originally a college mini-project, rebuilt into a
-professional MVC web application.
+Made by Adwitiya Shukla.
