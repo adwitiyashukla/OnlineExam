@@ -1,0 +1,52 @@
+<%@ page import="java.util.List, java.util.Map, com.onlineexam.model.*, com.onlineexam.util.WebUtil" %>
+<%
+    String ctx = request.getContextPath();
+    String navRole = (String) session.getAttribute("role");
+    String navUser = (String) session.getAttribute("userName");
+    Object ptObj = request.getAttribute("pageTitle");
+    String pageTitle = (ptObj != null) ? ptObj.toString() : "OnlineExam";
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= WebUtil.escape(pageTitle) %> &middot; OnlineExam</title>
+<link rel="stylesheet" href="<%= ctx %>/assets/css/style.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="<%= ctx %>/index.jsp"><span class="brand-mark">OE</span> OnlineExam</a>
+    <nav class="nav-links">
+<% if ("STUDENT".equals(navRole)) { %>
+      <a href="<%= ctx %>/student/dashboard">Dashboard</a>
+      <a href="<%= ctx %>/student/quiz">Take Quiz</a>
+      <a href="<%= ctx %>/student/results">My Results</a>
+      <a href="<%= ctx %>/leaderboard">Leaderboard</a>
+      <span class="nav-user">Hi, <%= WebUtil.escape(navUser) %></span>
+      <a class="btn btn-outline btn-sm" href="<%= ctx %>/logout">Logout</a>
+<% } else if ("TEACHER".equals(navRole)) { %>
+      <a href="<%= ctx %>/teacher/dashboard">Dashboard</a>
+      <a href="<%= ctx %>/teacher/subjects">My Subjects</a>
+      <a href="<%= ctx %>/teacher/results">Attempts</a>
+      <a href="<%= ctx %>/leaderboard">Leaderboard</a>
+      <span class="nav-user">Hi, <%= WebUtil.escape(navUser) %></span>
+      <a class="btn btn-outline btn-sm" href="<%= ctx %>/logout">Logout</a>
+<% } else if ("ADMIN".equals(navRole)) { %>
+      <a href="<%= ctx %>/admin/dashboard">Dashboard</a>
+      <a href="<%= ctx %>/admin/students">Students</a>
+      <a href="<%= ctx %>/admin/teachers">Teachers</a>
+      <a href="<%= ctx %>/admin/subjects">Subjects</a>
+      <a href="<%= ctx %>/admin/results">Results</a>
+      <a class="btn btn-outline btn-sm" href="<%= ctx %>/logout">Logout</a>
+<% } else { %>
+      <a href="<%= ctx %>/index.jsp">Home</a>
+      <a href="<%= ctx %>/leaderboard">Leaderboard</a>
+      <a class="btn btn-outline btn-sm" href="<%= ctx %>/login?role=student">Login</a>
+      <a class="btn btn-primary btn-sm" href="<%= ctx %>/register?role=student">Register</a>
+<% } %>
+    </nav>
+  </div>
+</header>
+<main class="container">
