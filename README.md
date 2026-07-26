@@ -25,7 +25,7 @@ students, teachers and admins can track performance on dashboards and a
 
 | Choosing a subject | Timed quiz |
 |---|---|
-| ![Subject picker](screenshots/subject_page.png) | ![Timed quiz](screenshots/test.png) |
+| ![Subject picker](screenshots/subjectchoicepage.png) | ![Timed quiz](screenshots/quiz.png) |
 
 ---
 
@@ -172,7 +172,7 @@ http://localhost:8080/OnlineExam/
 |---------|------------------------|---------------|
 | Admin   | `admin@tiet.edu`       | `Admin@123`   |
 | Teacher | `prof.sharma@tiet.edu` | `Teacher@123` |
-| Student | `aman@tiet.edu`        | `Student@123` |
+| Student | `adwitiya@tiet.edu`        | `Student@123` |
 
 ---
 

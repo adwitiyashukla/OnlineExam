@@ -76,7 +76,7 @@ CREATE INDEX idx_result_student ON result(student_id);
 --  Login credentials:
 --     Admin    ->  admin@tiet.edu      /  Admin@123
 --     Teacher  ->  prof.sharma@tiet.edu /  Teacher@123
---     Student  ->  aman@tiet.edu       /  Student@123
+--     Student  ->  adwitiya@tiet.edu       /  Student@123
 -- =============================================================================
 INSERT INTO admin (email, password) VALUES
     ('admin@tiet.edu', 'hfhpc6+l6qwojBvQrK+tjg==:6/8/NG3a+4/MIKvFOR5/H/1q8ZoOPTM4XOk2hW9mXgM=');
@@ -85,7 +85,7 @@ INSERT INTO teacher (name, email, password) VALUES
     ('Dr. R. Sharma', 'prof.sharma@tiet.edu', 'DyUbi6cDvQkqc/narDpBrA==:vTttDqIAW2qTlkkOrJvky4M+DQrTt5e+GWhyysUN9YM=');
 
 INSERT INTO student (name, email, password) VALUES
-    ('Aman Verma', 'aman@tiet.edu', 'vxiON9NjnndegSydoKHalg==:2v+h+kzxPUyt70PZV+sok0ej4o6YdnxSo8dUQMb1Kkg=');
+    ('Adwitiya Shukla', 'adwitiya@tiet.edu', 'vxiON9NjnndegSydoKHalg==:2v+h+kzxPUyt70PZV+sok0ej4o6YdnxSo8dUQMb1Kkg=');
 
 -- Subjects (owned by teacher id = 1)
 INSERT INTO subject (code, name, teacher_id) VALUES
