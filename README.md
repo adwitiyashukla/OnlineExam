@@ -114,22 +114,6 @@ You will need JDK 17, Apache Tomcat 9, MySQL 8 and an IDE like Eclipse.
 4. Import the project into Eclipse, add it to a Tomcat 9 server and start it.
 5. Open http://localhost:8080/OnlineExam/ in the browser.
 
-## Demo accounts
-
-The SQL script already creates these accounts so you can try the app right away:
-
-| Type | Email | Password |
-|---|---|---|
-| Admin | admin@tiet.edu | Admin@123 |
-| Teacher | prof.sharma@tiet.edu | Teacher@123 |
-| Student | adwitiya@tiet.edu | Student@123 |
-
-## Things I could add later
-
-- Use a stronger hashing method like bcrypt and add a database connection pool.
-- One time limit for the whole quiz and shuffling the order of the questions.
-- Exporting results to a CSV file or showing some simple charts.
-
 ## License
 
 This project is under the MIT License, see the LICENSE file.
