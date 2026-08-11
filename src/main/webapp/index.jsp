@@ -19,7 +19,6 @@
 <h2 class="section-title">Choose your role</h2>
 <div class="role-cards">
   <div class="role-card">
-    <div class="role-emoji">&#127891;</div>
     <h3>Student</h3>
     <p>Register, attempt timed quizzes by subject, and review your score history.</p>
     <div class="role-links">
@@ -28,7 +27,6 @@
     </div>
   </div>
   <div class="role-card">
-    <div class="role-emoji">&#128218;</div>
     <h3>Teacher</h3>
     <p>Create subjects, add multiple-choice questions, and see how students performed.</p>
     <div class="role-links">
@@ -37,7 +35,6 @@
     </div>
   </div>
   <div class="role-card">
-    <div class="role-emoji">&#128272;</div>
     <h3>Administrator</h3>
     <p>Oversee all users, subjects and results across the entire platform.</p>
     <div class="role-links">
@@ -49,19 +46,19 @@
 <h2 class="section-title">Why OnlineExam?</h2>
 <div class="card-grid">
   <div class="card">
-    <h3>&#9889; Instant results</h3>
+    <h3>Instant results</h3>
     <p class="text-muted">Quizzes are graded the moment you submit, with a per-question review.</p>
   </div>
   <div class="card">
-    <h3>&#9203; Timed tests</h3>
+    <h3>Timed tests</h3>
     <p class="text-muted">Each quiz runs against a countdown timer that auto-submits when time is up.</p>
   </div>
   <div class="card">
-    <h3>&#128202; Progress tracking</h3>
+    <h3>Progress tracking</h3>
     <p class="text-muted">Every attempt is saved so students and teachers can track performance.</p>
   </div>
   <div class="card">
-    <h3>&#128274; Secure by design</h3>
+    <h3>Secure by design</h3>
     <p class="text-muted">Salted-hashed passwords, session-based access control and prepared statements.</p>
   </div>
 </div>

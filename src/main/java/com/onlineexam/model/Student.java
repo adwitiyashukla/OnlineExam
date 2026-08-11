@@ -1,6 +1,5 @@
 package com.onlineexam.model;
 
-/** Represents a student who attempts quizzes. */
 public class Student {
 
     private int id;

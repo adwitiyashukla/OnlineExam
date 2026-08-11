@@ -3,7 +3,7 @@
     Subject subject = (Subject) request.getAttribute("subject");
     List<Question> questions = (List<Question>) request.getAttribute("questions");
     int seconds = questions.size() * 40;   // 40 seconds per question
-    request.setAttribute("pageTitle", "Quiz — " + subject.getName());
+    request.setAttribute("pageTitle", "Quiz - " + subject.getName());
 %>
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
@@ -14,7 +14,7 @@
   <div class="quiz-header">
     <div>
       <strong><%= WebUtil.escape(subject.getName()) %></strong>
-      <span class="text-muted">(<%= WebUtil.escape(subject.getCode()) %>) &middot; <%= questions.size() %> questions</span>
+      <span class="text-muted">(<%= WebUtil.escape(subject.getCode()) %>) - <%= questions.size() %> questions</span>
     </div>
     <div class="timer" id="timer">--:--</div>
   </div>

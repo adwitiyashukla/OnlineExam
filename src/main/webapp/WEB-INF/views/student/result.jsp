@@ -39,15 +39,15 @@
      boolean gotIt = sel.equals(correct); %>
   <div class="question-card">
     <div class="q-num" style="color:<%= gotIt ? "#16a34a" : "#dc2626" %>;">
-      <%= gotIt ? "&#10003; Correct" : (sel.isEmpty() ? "&#8212; Not answered" : "&#10007; Incorrect") %>
+      <%= gotIt ? "Correct" : (sel.isEmpty() ? "Not answered" : "Incorrect") %>
     </div>
     <div class="q-text"><%= WebUtil.escape(q.getQuestionText()) %></div>
     <div class="options">
       <% for (String opt : opts) {
            String cls = "option";
            String mark = "";
-           if (opt.equals(correct)) { cls += " correct"; mark = "&#10003;"; }
-           else if (opt.equals(sel)) { cls += " incorrect"; mark = "&#10007;"; } %>
+           if (opt.equals(correct)) { cls += " correct"; mark = "Correct"; }
+           else if (opt.equals(sel)) { cls += " incorrect"; mark = "Your answer"; } %>
         <div class="<%= cls %>">
           <span><%= WebUtil.escape(opt) %></span>
           <% if (!mark.isEmpty()) { %><span class="tick"><%= mark %></span><% } %>

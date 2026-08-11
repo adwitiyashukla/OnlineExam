@@ -35,7 +35,7 @@
       <% if (!"admin".equals(role)) { %>
         New here? <a href="<%= ctx %>/register?role=<%= role %>">Create a <%= role %> account</a><br>
       <% } %>
-      <a href="<%= ctx %>/index.jsp">&larr; Back to home</a>
+      <a href="<%= ctx %>/index.jsp">Back to home</a>
     </div>
   </div>
 </div>

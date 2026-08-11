@@ -14,7 +14,6 @@ import com.onlineexam.dao.StudentDAO;
 import com.onlineexam.dao.SubjectDAO;
 import com.onlineexam.dao.TeacherDAO;
 
-/** Admin landing page showing system-wide statistics. */
 @WebServlet("/admin/dashboard")
 public class AdminDashboardServlet extends HttpServlet {
 

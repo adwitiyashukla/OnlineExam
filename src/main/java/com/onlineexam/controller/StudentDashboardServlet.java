@@ -13,7 +13,6 @@ import com.onlineexam.dao.ResultDAO;
 import com.onlineexam.model.Result;
 import com.onlineexam.model.Student;
 
-/** Landing page for a logged-in student with quick stats and recent attempts. */
 @WebServlet("/student/dashboard")
 public class StudentDashboardServlet extends HttpServlet {
 

@@ -7,12 +7,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * Central JDBC connection factory. Reads {@code db.properties} from the
- * classpath (WEB-INF/classes) once at class-load time and hands out fresh
- * {@link Connection}s. Keeping all connection details here means no other
- * class hard-codes database credentials.
- */
 public final class DBConnection {
 
     private static final String url;
@@ -30,7 +24,6 @@ public final class DBConnection {
             Properties props = new Properties();
             props.load(in);
 
-            // Register the JDBC driver.
             Class.forName(props.getProperty("db.driver"));
 
             url = props.getProperty("db.url");
@@ -44,10 +37,9 @@ public final class DBConnection {
     }
 
     private DBConnection() {
-        // utility class - no instances
+
     }
 
-    /** @return a new database connection (caller is responsible for closing it) */
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }

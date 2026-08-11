@@ -10,7 +10,7 @@
 <% if (info != null) { %><div class="alert alert-success"><%= WebUtil.escape(info) %></div><% } %>
 
 <% if (teachers.isEmpty()) { %>
-  <div class="card empty-state"><span class="emoji">&#128101;</span> No teachers registered yet.</div>
+  <div class="card empty-state">No teachers registered yet.</div>
 <% } else { %>
   <div class="table-wrap">
     <table class="table">

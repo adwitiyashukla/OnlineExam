@@ -1,7 +1,3 @@
-/* =============================================================================
-   OnlineExam — design system
-   Clean, modern, professional blue theme
-   ========================================================================== */
 :root {
     --primary:        #2563eb;
     --primary-dark:   #1d4ed8;
@@ -40,7 +36,6 @@ body {
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ---------- Navbar ---------- */
 .navbar {
     background: var(--surface);
     box-shadow: var(--shadow);
@@ -91,7 +86,6 @@ a:hover { text-decoration: underline; }
 .nav-links a:not(.btn):hover { color: var(--primary); background: var(--primary-light); text-decoration: none; }
 .nav-user { color: var(--muted); font-size: .9rem; padding: 0 6px; }
 
-/* ---------- Layout ---------- */
 .container {
     width: 100%;
     max-width: 1120px;
@@ -104,7 +98,6 @@ a:hover { text-decoration: underline; }
 .page-head p { color: var(--muted); margin-top: 4px; }
 .section-title { font-size: 1.15rem; font-weight: 700; margin: 28px 0 14px; }
 
-/* ---------- Buttons ---------- */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -136,7 +129,6 @@ a:hover { text-decoration: underline; }
 .btn-lg { padding: 14px 26px; font-size: 1.05rem; }
 .btn-block { width: 100%; }
 
-/* ---------- Cards ---------- */
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -151,7 +143,6 @@ a:hover { text-decoration: underline; }
     gap: 20px;
 }
 
-/* Action tiles (dashboards) */
 .tile {
     display: flex;
     flex-direction: column;
@@ -165,16 +156,9 @@ a:hover { text-decoration: underline; }
     color: var(--text);
 }
 .tile:hover { text-decoration: none; box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: #cbd5e1; }
-.tile .tile-icon {
-    width: 46px; height: 46px; border-radius: 11px;
-    background: var(--primary-light); color: var(--primary);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; font-weight: 800; margin-bottom: 4px;
-}
 .tile h3 { font-size: 1.1rem; }
 .tile p { color: var(--muted); font-size: .92rem; }
 
-/* Stat cards */
 .stat {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -185,7 +169,6 @@ a:hover { text-decoration: underline; }
 .stat .stat-value { font-size: 2.1rem; font-weight: 800; color: var(--primary); letter-spacing: -.02em; }
 .stat .stat-label { color: var(--muted); font-size: .9rem; text-transform: uppercase; letter-spacing: .04em; }
 
-/* ---------- Forms ---------- */
 .form-wrap { max-width: 440px; margin: 0 auto; }
 .form-group { margin-bottom: 16px; }
 .form-group label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
@@ -210,7 +193,6 @@ select.form-control { cursor: pointer; }
 .form-row .form-group { flex: 1; min-width: 180px; }
 .form-hint { color: var(--muted); font-size: .82rem; margin-top: 4px; }
 
-/* ---------- Alerts ---------- */
 .alert {
     padding: 12px 16px;
     border-radius: var(--radius-sm);
@@ -224,7 +206,6 @@ select.form-control { cursor: pointer; }
 .alert-info    { background: var(--primary-light); color: #1e40af; border-color: #bfdbfe; }
 .alert-warning { background: var(--warning-bg); color: #92400e; border-color: #fde68a; }
 
-/* ---------- Tables ---------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); background: var(--surface); }
 table.table { width: 100%; border-collapse: collapse; font-size: .93rem; }
 table.table thead th {
@@ -247,7 +228,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .text-right { text-align: right; }
 .nowrap { white-space: nowrap; }
 
-/* ---------- Badges ---------- */
 .badge {
     display: inline-block;
     padding: 3px 10px;
@@ -266,7 +246,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .rank-2 { color: #64748b; }
 .rank-3 { color: #92400e; }
 
-/* ---------- Hero (landing) ---------- */
 .hero {
     background: linear-gradient(135deg, #1e3a8a 0%, var(--primary) 55%, var(--accent) 100%);
     color: #fff;
@@ -284,7 +263,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .hero .btn-outline:hover { background: rgba(255,255,255,.12); border-color: #fff; }
 .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-/* Role selection cards on landing */
 .role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
 .role-card {
     background: var(--surface);
@@ -296,12 +274,10 @@ table.table tbody tr:hover { background: #f8fafc; }
     transition: all .18s ease;
 }
 .role-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-.role-emoji { font-size: 2.2rem; }
 .role-card h3 { margin: 12px 0 6px; font-size: 1.25rem; }
 .role-card p { color: var(--muted); font-size: .92rem; margin-bottom: 18px; }
 .role-card .role-links { display: flex; gap: 10px; justify-content: center; }
 
-/* ---------- Auth pages ---------- */
 .auth-shell { max-width: 430px; margin: 40px auto; }
 .auth-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 32px; }
 .auth-card h1 { font-size: 1.5rem; text-align: center; margin-bottom: 4px; }
@@ -309,7 +285,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .auth-switch { text-align: center; margin-top: 18px; color: var(--muted); font-size: .9rem; }
 .role-pill { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700; text-transform: capitalize; }
 
-/* ---------- Quiz ---------- */
 .quiz-header {
     display: flex; align-items: center; justify-content: space-between;
     gap: 16px; flex-wrap: wrap;
@@ -347,7 +322,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .option.incorrect { border-color: var(--danger); background: var(--danger-bg); }
 .option .tick { margin-left: auto; font-weight: 800; }
 
-/* Result summary ring */
 .result-hero { text-align: center; padding: 32px; }
 .score-ring {
     width: 160px; height: 160px; border-radius: 50%;
@@ -358,7 +332,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .score-ring .score-pct { font-size: 2.4rem; font-weight: 800; line-height: 1; }
 .score-ring .score-frac { font-size: .95rem; opacity: .9; }
 
-/* ---------- Utility ---------- */
 .flex { display: flex; }
 .between { justify-content: space-between; }
 .items-center { align-items: center; }
@@ -368,9 +341,6 @@ table.table tbody tr:hover { background: #f8fafc; }
 .mb { margin-bottom: 20px; }
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .empty-state { text-align: center; padding: 48px 24px; color: var(--muted); }
-.empty-state .emoji { font-size: 2.4rem; display: block; margin-bottom: 8px; }
-
-/* ---------- Footer ---------- */
 .site-footer {
     flex-shrink: 0;
     text-align: center;
@@ -381,7 +351,6 @@ table.table tbody tr:hover { background: #f8fafc; }
     background: var(--surface);
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 640px) {
     .navbar-inner { height: auto; padding: 10px 16px; flex-direction: column; align-items: flex-start; }
     .nav-links { width: 100%; }

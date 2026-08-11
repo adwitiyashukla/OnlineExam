@@ -3,11 +3,6 @@ package com.onlineexam.model;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/**
- * Represents one completed quiz attempt by a student.
- * {@code studentName} and {@code subjectName} are display-only fields
- * populated by table joins.
- */
 public class Result {
 
     private int id;
@@ -17,8 +12,8 @@ public class Result {
     private int total;
     private Timestamp attemptedAt;
 
-    private String studentName;   // display only (from JOIN)
-    private String subjectName;   // display only (from JOIN)
+    private String studentName;
+    private String subjectName;
 
     public Result() {
     }
@@ -94,7 +89,6 @@ public class Result {
         this.subjectName = subjectName;
     }
 
-    /** Percentage score rounded to a whole number (0-100). */
     public int getPercentage() {
         if (total == 0) {
             return 0;
@@ -102,7 +96,6 @@ public class Result {
         return Math.round((score * 100.0f) / total);
     }
 
-    /** Human-friendly attempt date, e.g. "20 Jul 2026, 10:15". */
     public String getAttemptedAtDisplay() {
         if (attemptedAt == null) {
             return "-";

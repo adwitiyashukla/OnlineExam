@@ -9,12 +9,10 @@ import java.util.logging.Logger;
 
 import com.onlineexam.model.Admin;
 
-/** Data-access object for administrator accounts. */
 public class AdminDAO {
 
     private static final Logger LOGGER = Logger.getLogger(AdminDAO.class.getName());
 
-    /** Look up an admin by email (used for login). Returns {@code null} if none. */
     public Admin findByEmail(String email) {
         String sql = "SELECT id, email, password FROM admin WHERE email = ?";
         try (Connection con = DBConnection.getConnection();

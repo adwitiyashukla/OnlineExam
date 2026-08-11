@@ -1,16 +1,12 @@
 package com.onlineexam.model;
 
-/**
- * Represents a subject / course that groups a set of quiz questions.
- * {@code teacherName} is a display-only field populated by table joins.
- */
 public class Subject {
 
     private String code;
     private String name;
     private int teacherId;
-    private String teacherName;   // display only (from JOIN)
-    private int questionCount;    // display only (from COUNT)
+    private String teacherName;
+    private int questionCount;
 
     public Subject() {
     }

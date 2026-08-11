@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.onlineexam.dao.ResultDAO;
 import com.onlineexam.model.Student;
 
-/** Shows a student their full quiz attempt history. */
 @WebServlet("/student/results")
 public class StudentResultServlet extends HttpServlet {
 

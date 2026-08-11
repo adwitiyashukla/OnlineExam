@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.onlineexam.dao.ResultDAO;
 import com.onlineexam.model.Teacher;
 
-/** Shows a teacher every attempt made on the subjects they own. */
 @WebServlet("/teacher/results")
 public class TeacherResultServlet extends HttpServlet {
 

@@ -11,12 +11,10 @@ import java.util.logging.Logger;
 
 import com.onlineexam.model.Result;
 
-/** Data-access object for completed quiz attempts. */
 public class ResultDAO {
 
     private static final Logger LOGGER = Logger.getLogger(ResultDAO.class.getName());
 
-    /** Persist a completed quiz attempt (attempted_at defaults to now). */
     public boolean save(Result r) {
         String sql = "INSERT INTO result (student_id, subject_code, score, total) VALUES (?, ?, ?, ?)";
         try (Connection con = DBConnection.getConnection();
@@ -33,7 +31,6 @@ public class ResultDAO {
         }
     }
 
-    /** A student's own attempt history (most recent first). */
     public List<Result> findByStudent(int studentId) {
         String sql = """
                 SELECT r.id, r.student_id, r.subject_code, r.score, r.total, r.attempted_at,
@@ -61,7 +58,6 @@ public class ResultDAO {
         }
     }
 
-    /** All attempts on subjects owned by a given teacher (most recent first). */
     public List<Result> findByTeacher(int teacherId) {
         String sql = """
                 SELECT r.id, r.student_id, r.subject_code, r.score, r.total, r.attempted_at,
@@ -84,7 +80,6 @@ public class ResultDAO {
         }
     }
 
-    /** Every attempt in the system (admin view, most recent first). */
     public List<Result> findAll() {
         String sql = """
                 SELECT r.id, r.student_id, r.subject_code, r.score, r.total, r.attempted_at,
@@ -104,7 +99,6 @@ public class ResultDAO {
         }
     }
 
-    /** Top attempts ranked by percentage then raw score (for the leaderboard). */
     public List<Result> getLeaderboard(int limit) {
         String sql = """
                 SELECT r.id, r.student_id, r.subject_code, r.score, r.total, r.attempted_at,
@@ -127,7 +121,6 @@ public class ResultDAO {
         }
     }
 
-    /** Total number of attempts (for admin dashboard stats). */
     public int count() {
         String sql = "SELECT COUNT(*) FROM result";
         try (Connection con = DBConnection.getConnection();

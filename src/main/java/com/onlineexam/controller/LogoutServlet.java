@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/** Ends the current session and returns the user to the landing page. */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 

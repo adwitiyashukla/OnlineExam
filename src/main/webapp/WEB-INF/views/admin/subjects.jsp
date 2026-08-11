@@ -10,7 +10,7 @@
 <% if (info != null) { %><div class="alert alert-success"><%= WebUtil.escape(info) %></div><% } %>
 
 <% if (subjects.isEmpty()) { %>
-  <div class="card empty-state"><span class="emoji">&#128193;</span> No subjects have been created yet.</div>
+  <div class="card empty-state">No subjects have been created yet.</div>
 <% } else { %>
   <div class="table-wrap">
     <table class="table">

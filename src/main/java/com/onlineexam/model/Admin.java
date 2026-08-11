@@ -1,6 +1,5 @@
 package com.onlineexam.model;
 
-/** Represents an administrator account. */
 public class Admin {
 
     private int id;

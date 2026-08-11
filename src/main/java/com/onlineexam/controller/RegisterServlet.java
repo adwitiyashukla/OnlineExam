@@ -15,11 +15,6 @@ import com.onlineexam.model.Teacher;
 import com.onlineexam.util.PasswordUtil;
 import com.onlineexam.util.WebUtil;
 
-/**
- * Handles self-registration for students and teachers. Passwords are hashed
- * before storage and duplicate emails are rejected. (Admin accounts are not
- * self-registerable and are seeded directly in the database.)
- */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
@@ -29,7 +24,6 @@ public class RegisterServlet extends HttpServlet {
     private final StudentDAO studentDAO = new StudentDAO();
     private final TeacherDAO teacherDAO = new TeacherDAO();
 
-    /** Show the registration form. */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,7 +33,6 @@ public class RegisterServlet extends HttpServlet {
         forwardToForm(request, response);
     }
 
-    /** Process a registration attempt. */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,7 +46,6 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("name", name);
         request.setAttribute("email", email);
 
-        // ---- server-side validation ----
         if (WebUtil.isBlank(name) || WebUtil.isBlank(email) || WebUtil.isBlank(password)) {
             fail(request, response, "All fields are required.");
             return;
@@ -86,7 +78,6 @@ public class RegisterServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/login?role=" + role + "&registered=1");
     }
 
-    /** Set an error message and re-show the registration form. */
     private void fail(HttpServletRequest request, HttpServletResponse response, String message)
             throws ServletException, IOException {
         request.setAttribute("error", message);

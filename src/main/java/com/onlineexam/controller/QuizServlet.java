@@ -20,16 +20,6 @@ import com.onlineexam.model.Student;
 import com.onlineexam.model.Subject;
 import com.onlineexam.util.WebUtil;
 
-/**
- * Drives the whole quiz flow:
- * <ul>
- *   <li>GET  -> show the subject picker</li>
- *   <li>POST action=start  -> load the chosen subject's questions</li>
- *   <li>POST action=submit -> grade the answers server-side and save the result</li>
- * </ul>
- * Grading re-reads the correct answers from the database rather than trusting
- * any value sent by the browser, so answers cannot be tampered with.
- */
 @WebServlet("/student/quiz")
 public class QuizServlet extends HttpServlet {
 
@@ -39,7 +29,6 @@ public class QuizServlet extends HttpServlet {
     private final QuestionDAO questionDAO = new QuestionDAO();
     private final ResultDAO resultDAO = new ResultDAO();
 
-    /** Show the list of subjects that currently have questions. */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,7 +47,6 @@ public class QuizServlet extends HttpServlet {
         }
     }
 
-    /** Load the questions for the chosen subject and render the quiz. */
     private void start(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -80,7 +68,6 @@ public class QuizServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/views/student/quiz.jsp").forward(request, response);
     }
 
-    /** Grade the submitted answers, persist the score, and show the result. */
     private void submit(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -88,7 +75,7 @@ public class QuizServlet extends HttpServlet {
         String code = WebUtil.clean(request.getParameter("subject"));
         Subject subject = WebUtil.isBlank(code) ? null : subjectDAO.findByCode(code);
         if (subject == null) {
-            showPicker(request, response, "Something went wrong — please try again.");
+            showPicker(request, response, "Something went wrong, please try again.");
             return;
         }
 

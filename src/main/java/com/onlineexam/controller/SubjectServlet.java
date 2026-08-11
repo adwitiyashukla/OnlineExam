@@ -13,11 +13,6 @@ import com.onlineexam.model.Subject;
 import com.onlineexam.model.Teacher;
 import com.onlineexam.util.WebUtil;
 
-/**
- * Lets a teacher manage their own subjects (create, rename, delete). All write
- * operations verify that the target subject actually belongs to the logged-in
- * teacher before making a change.
- */
 @WebServlet("/teacher/subjects")
 public class SubjectServlet extends HttpServlet {
 
@@ -101,7 +96,7 @@ public class SubjectServlet extends HttpServlet {
             case "duplicate": request.setAttribute("error", "A subject with that code already exists."); break;
             case "invalid":   request.setAttribute("error", "Subject code and name are required."); break;
             case "denied":    request.setAttribute("error", "You can only modify your own subjects."); break;
-            default: /* no message */ break;
+            default:  break;
         }
     }
 }

@@ -2,7 +2,6 @@ package com.onlineexam.util;
 
 import java.util.regex.Pattern;
 
-/** Small helpers for reading, validating and safely rendering request input. */
 public final class WebUtil {
 
     private static final Pattern EMAIL =
@@ -11,7 +10,6 @@ public final class WebUtil {
     private WebUtil() {
     }
 
-    /** Never-null, trimmed version of a request parameter. */
     public static String clean(String value) {
         return value == null ? "" : value.trim();
     }
@@ -24,11 +22,6 @@ public final class WebUtil {
         return value != null && EMAIL.matcher(value).matches();
     }
 
-    /**
-     * HTML-escape a string so user-supplied content (names, question text,
-     * options, ...) cannot inject markup or scripts when rendered in a JSP.
-     * Used everywhere untrusted data is echoed back to the page.
-     */
     public static String escape(String value) {
         if (value == null) {
             return "";

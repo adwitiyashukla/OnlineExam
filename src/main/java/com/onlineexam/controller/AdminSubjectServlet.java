@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.onlineexam.dao.SubjectDAO;
 import com.onlineexam.util.WebUtil;
 
-/** Admin view of all subjects across teachers (list and delete). */
 @WebServlet("/admin/subjects")
 public class AdminSubjectServlet extends HttpServlet {
 

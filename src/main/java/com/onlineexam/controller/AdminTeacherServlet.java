@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.onlineexam.dao.TeacherDAO;
 import com.onlineexam.util.WebUtil;
 
-/** Admin management of teacher accounts (list and delete). */
 @WebServlet("/admin/teachers")
 public class AdminTeacherServlet extends HttpServlet {
 
@@ -37,7 +36,7 @@ public class AdminTeacherServlet extends HttpServlet {
             try {
                 teacherDAO.delete(Integer.parseInt(WebUtil.clean(request.getParameter("id"))));
             } catch (NumberFormatException ignored) {
-                // fall through
+
             }
         }
         response.sendRedirect(request.getContextPath() + "/admin/teachers?msg=deleted");

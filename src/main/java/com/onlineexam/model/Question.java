@@ -1,6 +1,5 @@
 package com.onlineexam.model;
 
-/** Represents a single multiple-choice question belonging to a subject. */
 public class Question {
 
     private int id;

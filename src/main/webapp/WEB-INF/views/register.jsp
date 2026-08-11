@@ -39,7 +39,7 @@
 
     <div class="auth-switch">
       Already have an account? <a href="<%= ctx %>/login?role=<%= role %>">Login instead</a><br>
-      <a href="<%= ctx %>/index.jsp">&larr; Back to home</a>
+      <a href="<%= ctx %>/index.jsp">Back to home</a>
     </div>
   </div>
 </div>

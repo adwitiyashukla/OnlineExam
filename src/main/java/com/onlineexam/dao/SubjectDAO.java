@@ -11,12 +11,10 @@ import java.util.logging.Logger;
 
 import com.onlineexam.model.Subject;
 
-/** Data-access object for subjects / courses. */
 public class SubjectDAO {
 
     private static final Logger LOGGER = Logger.getLogger(SubjectDAO.class.getName());
 
-    /** Insert a new subject owned by a teacher. */
     public boolean add(Subject s) {
         String sql = "INSERT INTO subject (code, name, teacher_id) VALUES (?, ?, ?)";
         try (Connection con = DBConnection.getConnection();
@@ -32,7 +30,6 @@ public class SubjectDAO {
         }
     }
 
-    /** @return true if a subject with this code already exists. */
     public boolean exists(String code) {
         String sql = "SELECT 1 FROM subject WHERE code = ?";
         try (Connection con = DBConnection.getConnection();
@@ -48,7 +45,6 @@ public class SubjectDAO {
         }
     }
 
-    /** Single subject with its teacher's name. Returns {@code null} if not found. */
     public Subject findByCode(String code) {
         String sql = """
                 SELECT s.code, s.name, s.teacher_id, t.name AS teacher_name
@@ -74,7 +70,6 @@ public class SubjectDAO {
         }
     }
 
-    /** Subjects owned by one teacher, each with its question count. */
     public List<Subject> findByTeacher(int teacherId) {
         String sql = """
                 SELECT s.code, s.name, s.teacher_id, t.name AS teacher_name,
@@ -96,7 +91,6 @@ public class SubjectDAO {
         }
     }
 
-    /** All subjects with teacher name and question count. */
     public List<Subject> findAll() {
         String sql = """
                 SELECT s.code, s.name, s.teacher_id, t.name AS teacher_name,
@@ -115,7 +109,6 @@ public class SubjectDAO {
         }
     }
 
-    /** Only subjects that currently have at least one question (for the quiz picker). */
     public List<Subject> findPlayable() {
         String sql = """
                 SELECT s.code, s.name, s.teacher_id, t.name AS teacher_name,
@@ -136,7 +129,6 @@ public class SubjectDAO {
         }
     }
 
-    /** Update a subject's display name (code is the fixed primary key). */
     public boolean update(Subject s) {
         String sql = "UPDATE subject SET name = ? WHERE code = ?";
         try (Connection con = DBConnection.getConnection();
@@ -151,7 +143,6 @@ public class SubjectDAO {
         }
     }
 
-    /** Delete a subject (cascades to its questions and results). */
     public boolean delete(String code) {
         String sql = "DELETE FROM subject WHERE code = ?";
         try (Connection con = DBConnection.getConnection();
@@ -165,7 +156,6 @@ public class SubjectDAO {
         }
     }
 
-    /** Total number of subjects (for admin dashboard stats). */
     public int count() {
         String sql = "SELECT COUNT(*) FROM subject";
         try (Connection con = DBConnection.getConnection();

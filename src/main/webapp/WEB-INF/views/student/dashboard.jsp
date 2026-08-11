@@ -9,7 +9,7 @@
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
 <div class="page-head">
-  <h1>Welcome, <%= WebUtil.escape(student.getName()) %> &#128075;</h1>
+  <h1>Welcome, <%= WebUtil.escape(student.getName()) %></h1>
   <p>Ready to test your knowledge? Pick a subject and start a quiz.</p>
 </div>
 
@@ -20,17 +20,14 @@
 
 <div class="card-grid">
   <a class="tile" href="<%= ctx %>/student/quiz">
-    <div class="tile-icon">&#9998;</div>
     <h3>Take a Quiz</h3>
     <p>Choose a subject and attempt a timed multiple-choice quiz.</p>
   </a>
   <a class="tile" href="<%= ctx %>/student/results">
-    <div class="tile-icon">&#128202;</div>
     <h3>My Results</h3>
     <p>Review every quiz you have attempted and how you scored.</p>
   </a>
   <a class="tile" href="<%= ctx %>/leaderboard">
-    <div class="tile-icon">&#127942;</div>
     <h3>Leaderboard</h3>
     <p>See how your best scores compare with everyone else.</p>
   </a>
@@ -39,7 +36,6 @@
 <h2 class="section-title">Recent attempts</h2>
 <% if (recent == null || recent.isEmpty()) { %>
   <div class="card empty-state">
-    <span class="emoji">&#128203;</span>
     You haven't attempted any quizzes yet.
     <div class="mt"><a class="btn btn-primary" href="<%= ctx %>/student/quiz">Start your first quiz</a></div>
   </div>

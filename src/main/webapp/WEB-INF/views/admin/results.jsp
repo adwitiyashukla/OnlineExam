@@ -8,7 +8,7 @@
 <div class="page-head"><h1>All Results</h1><p>Every quiz attempt recorded in the system.</p></div>
 
 <% if (results.isEmpty()) { %>
-  <div class="card empty-state"><span class="emoji">&#128203;</span> No quiz attempts recorded yet.</div>
+  <div class="card empty-state">No quiz attempts recorded yet.</div>
 <% } else { %>
   <div class="table-wrap">
     <table class="table">

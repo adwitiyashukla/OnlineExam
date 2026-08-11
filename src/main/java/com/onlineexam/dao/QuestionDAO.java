@@ -11,12 +11,10 @@ import java.util.logging.Logger;
 
 import com.onlineexam.model.Question;
 
-/** Data-access object for quiz questions. */
 public class QuestionDAO {
 
     private static final Logger LOGGER = Logger.getLogger(QuestionDAO.class.getName());
 
-    /** Insert a new question. */
     public boolean add(Question q) {
         String sql = """
                 INSERT INTO question
@@ -33,7 +31,6 @@ public class QuestionDAO {
         }
     }
 
-    /** All questions for a subject, ordered by id. */
     public List<Question> findBySubject(String subjectCode) {
         String sql = """
                 SELECT id, subject_code, question_text, option1, option2, option3, option4, correct_answer
@@ -55,7 +52,6 @@ public class QuestionDAO {
         }
     }
 
-    /** Single question by id. Returns {@code null} if not found. */
     public Question findById(int id) {
         String sql = """
                 SELECT id, subject_code, question_text, option1, option2, option3, option4, correct_answer
@@ -76,7 +72,6 @@ public class QuestionDAO {
         }
     }
 
-    /** Update an existing question. */
     public boolean update(Question q) {
         String sql = """
                 UPDATE question SET
@@ -99,7 +94,6 @@ public class QuestionDAO {
         }
     }
 
-    /** Delete a question by id. */
     public boolean delete(int id) {
         String sql = "DELETE FROM question WHERE id = ?";
         try (Connection con = DBConnection.getConnection();
@@ -113,7 +107,6 @@ public class QuestionDAO {
         }
     }
 
-    /** Number of questions in a subject. */
     public int countBySubject(String subjectCode) {
         String sql = "SELECT COUNT(*) FROM question WHERE subject_code = ?";
         try (Connection con = DBConnection.getConnection();
@@ -129,7 +122,6 @@ public class QuestionDAO {
         }
     }
 
-    /** Total number of questions (for admin dashboard stats). */
     public int count() {
         String sql = "SELECT COUNT(*) FROM question";
         try (Connection con = DBConnection.getConnection();

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.onlineexam.dao.ResultDAO;
 
-/** Public leaderboard showing the highest-scoring quiz attempts. */
 @WebServlet("/leaderboard")
 public class LeaderboardServlet extends HttpServlet {
 

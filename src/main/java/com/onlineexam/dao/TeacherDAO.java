@@ -11,12 +11,10 @@ import java.util.logging.Logger;
 
 import com.onlineexam.model.Teacher;
 
-/** Data-access object for teacher accounts. */
 public class TeacherDAO {
 
     private static final Logger LOGGER = Logger.getLogger(TeacherDAO.class.getName());
 
-    /** Insert a new teacher. The password must already be hashed. */
     public boolean register(Teacher t) {
         String sql = "INSERT INTO teacher (name, email, password) VALUES (?, ?, ?)";
         try (Connection con = DBConnection.getConnection();
@@ -33,7 +31,6 @@ public class TeacherDAO {
         }
     }
 
-    /** Find a teacher by email (used for login). Returns {@code null} if none. */
     public Teacher findByEmail(String email) {
         String sql = "SELECT id, name, email, password FROM teacher WHERE email = ?";
         try (Connection con = DBConnection.getConnection();
@@ -52,7 +49,6 @@ public class TeacherDAO {
         }
     }
 
-    /** @return true if a teacher with this email already exists. */
     public boolean emailExists(String email) {
         String sql = "SELECT 1 FROM teacher WHERE email = ?";
         try (Connection con = DBConnection.getConnection();
@@ -68,7 +64,6 @@ public class TeacherDAO {
         }
     }
 
-    /** All teachers (password omitted) - used by the admin panel. */
     public List<Teacher> findAll() {
         String sql = "SELECT id, name, email FROM teacher ORDER BY id";
         List<Teacher> list = new ArrayList<>();
@@ -90,7 +85,6 @@ public class TeacherDAO {
         }
     }
 
-    /** Delete a teacher by id. */
     public boolean delete(int id) {
         String sql = "DELETE FROM teacher WHERE id = ?";
         try (Connection con = DBConnection.getConnection();
@@ -104,7 +98,6 @@ public class TeacherDAO {
         }
     }
 
-    /** Total number of teachers (for admin dashboard stats). */
     public int count() {
         String sql = "SELECT COUNT(*) FROM teacher";
         try (Connection con = DBConnection.getConnection();

@@ -15,7 +15,6 @@
 
 <% if (subjects == null || subjects.isEmpty()) { %>
   <div class="card empty-state">
-    <span class="emoji">&#128533;</span>
     No quizzes are available yet. Please check back once a teacher has added questions.
   </div>
 <% } else { %>
@@ -25,16 +24,16 @@
       <div class="form-group">
         <label for="subject">Subject</label>
         <select class="form-control" id="subject" name="subject" required>
-          <option value="">— Choose a subject —</option>
+          <option value="">Choose a subject</option>
           <% for (Subject s : subjects) { %>
             <option value="<%= WebUtil.escape(s.getCode()) %>">
-              <%= WebUtil.escape(s.getCode()) %> — <%= WebUtil.escape(s.getName()) %>
+              <%= WebUtil.escape(s.getCode()) %> - <%= WebUtil.escape(s.getName()) %>
               (<%= s.getQuestionCount() %> questions)
             </option>
           <% } %>
         </select>
       </div>
-      <button class="btn btn-primary btn-block btn-lg" type="submit">Start Quiz &rarr;</button>
+      <button class="btn btn-primary btn-block btn-lg" type="submit">Start Quiz</button>
     </form>
   </div>
 <% } %>

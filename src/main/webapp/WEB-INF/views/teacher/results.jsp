@@ -12,7 +12,6 @@
 
 <% if (results == null || results.isEmpty()) { %>
   <div class="card empty-state">
-    <span class="emoji">&#128203;</span>
     No students have attempted your quizzes yet.
   </div>
 <% } else { %>

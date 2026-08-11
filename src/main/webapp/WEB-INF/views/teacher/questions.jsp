@@ -13,7 +13,7 @@
                         editQuestion.getOption3(), editQuestion.getOption4() }
         : new String[]{ "", "", "", "" };
     String corr = editing ? editQuestion.getCorrectAnswer() : null;
-    request.setAttribute("pageTitle", "Questions — " + subject.getName());
+    request.setAttribute("pageTitle", "Questions - " + subject.getName());
 %>
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
@@ -22,7 +22,7 @@
     <h1>Questions</h1>
     <p><%= WebUtil.escape(subject.getName()) %> <span class="badge badge-muted"><%= WebUtil.escape(code) %></span></p>
   </div>
-  <a class="btn btn-outline btn-sm" href="<%= ctx %>/teacher/subjects">&larr; Back to subjects</a>
+  <a class="btn btn-outline btn-sm" href="<%= ctx %>/teacher/subjects">Back to subjects</a>
 </div>
 
 <% if (info != null)  { %><div class="alert alert-success mt"><%= WebUtil.escape(info) %></div><% } %>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="form-group">
-      <label>Options — select the radio next to the correct answer</label>
+      <label>Options - select the radio next to the correct answer</label>
       <div class="options">
         <% for (int k = 1; k <= 4; k++) {
              String val = eo[k - 1];
@@ -63,7 +63,7 @@
 
 <h2 class="section-title">Questions in this subject (<%= questions.size() %>)</h2>
 <% if (questions.isEmpty()) { %>
-  <div class="card empty-state"><span class="emoji">&#10067;</span> No questions yet — add your first one above.</div>
+  <div class="card empty-state">No questions yet - add your first one above.</div>
 <% } else {
      int n = 1;
      for (Question q : questions) {

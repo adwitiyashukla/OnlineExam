@@ -24,17 +24,13 @@
 
 <h2 class="section-title">Manage</h2>
 <div class="card-grid">
-  <a class="tile" href="<%= ctx %>/admin/students">
-    <div class="tile-icon">&#127891;</div><h3>Students</h3><p>View and remove student accounts.</p>
+  <a class="tile" href="<%= ctx %>/admin/students"><h3>Students</h3><p>View and remove student accounts.</p>
   </a>
-  <a class="tile" href="<%= ctx %>/admin/teachers">
-    <div class="tile-icon">&#128218;</div><h3>Teachers</h3><p>View and remove teacher accounts.</p>
+  <a class="tile" href="<%= ctx %>/admin/teachers"><h3>Teachers</h3><p>View and remove teacher accounts.</p>
   </a>
-  <a class="tile" href="<%= ctx %>/admin/subjects">
-    <div class="tile-icon">&#128209;</div><h3>Subjects</h3><p>Browse and delete subjects across all teachers.</p>
+  <a class="tile" href="<%= ctx %>/admin/subjects"><h3>Subjects</h3><p>Browse and delete subjects across all teachers.</p>
   </a>
-  <a class="tile" href="<%= ctx %>/admin/results">
-    <div class="tile-icon">&#128202;</div><h3>Results</h3><p>Inspect every quiz attempt in the system.</p>
+  <a class="tile" href="<%= ctx %>/admin/results"><h3>Results</h3><p>Inspect every quiz attempt in the system.</p>
   </a>
 </div>
 

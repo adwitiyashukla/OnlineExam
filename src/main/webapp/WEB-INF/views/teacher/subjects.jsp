@@ -40,7 +40,7 @@
 
 <h2 class="section-title">All my subjects</h2>
 <% if (subjects == null || subjects.isEmpty()) { %>
-  <div class="card empty-state"><span class="emoji">&#128193;</span> No subjects yet — add your first one above.</div>
+  <div class="card empty-state">No subjects yet - add your first one above.</div>
 <% } else { %>
   <div class="table-wrap">
     <table class="table">

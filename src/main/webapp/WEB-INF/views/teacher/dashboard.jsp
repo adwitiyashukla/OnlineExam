@@ -11,7 +11,7 @@
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
 <div class="page-head">
-  <h1>Welcome, <%= WebUtil.escape(teacher.getName()) %> &#128075;</h1>
+  <h1>Welcome, <%= WebUtil.escape(teacher.getName()) %></h1>
   <p>Manage your subjects and questions, and track how students are performing.</p>
 </div>
 
@@ -23,17 +23,14 @@
 
 <div class="card-grid">
   <a class="tile" href="<%= ctx %>/teacher/subjects">
-    <div class="tile-icon">&#128218;</div>
     <h3>Manage Subjects</h3>
     <p>Create subjects and add or edit their multiple-choice questions.</p>
   </a>
   <a class="tile" href="<%= ctx %>/teacher/results">
-    <div class="tile-icon">&#128202;</div>
     <h3>Student Attempts</h3>
     <p>See every quiz attempt made on the subjects you own.</p>
   </a>
   <a class="tile" href="<%= ctx %>/leaderboard">
-    <div class="tile-icon">&#127942;</div>
     <h3>Leaderboard</h3>
     <p>View the top-scoring attempts across the platform.</p>
   </a>
@@ -45,7 +42,6 @@
 </div>
 <% if (subjects == null || subjects.isEmpty()) { %>
   <div class="card empty-state" style="margin-top:12px;">
-    <span class="emoji">&#128193;</span>
     You have not created any subjects yet.
     <div class="mt"><a class="btn btn-primary" href="<%= ctx %>/teacher/subjects">Create a subject</a></div>
   </div>
@@ -69,7 +65,7 @@
 
 <h2 class="section-title">Recent attempts</h2>
 <% if (recentAttempts == null || recentAttempts.isEmpty()) { %>
-  <div class="card empty-state"><span class="emoji">&#128203;</span> No attempts on your subjects yet.</div>
+  <div class="card empty-state">No attempts on your subjects yet.</div>
 <% } else { %>
   <div class="table-wrap">
     <table class="table">

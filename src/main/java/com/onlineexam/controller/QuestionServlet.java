@@ -15,11 +15,6 @@ import com.onlineexam.model.Subject;
 import com.onlineexam.model.Teacher;
 import com.onlineexam.util.WebUtil;
 
-/**
- * Lets a teacher manage the questions inside one of their subjects. Every
- * request is scoped to a subject the teacher owns; the correct answer is chosen
- * by option number (1-4) so it always matches one of the stored options.
- */
 @WebServlet("/teacher/questions")
 public class QuestionServlet extends HttpServlet {
 
@@ -78,7 +73,6 @@ public class QuestionServlet extends HttpServlet {
             return;
         }
 
-        // ---- add / update share the same field parsing + validation ----
         String text = WebUtil.clean(request.getParameter("question"));
         String op1 = WebUtil.clean(request.getParameter("op1"));
         String op2 = WebUtil.clean(request.getParameter("op2"));
@@ -116,7 +110,6 @@ public class QuestionServlet extends HttpServlet {
         }
     }
 
-    /** @return the subject if it exists and belongs to this teacher, else null. */
     private Subject ownedSubject(Teacher teacher, String code) {
         if (WebUtil.isBlank(code)) {
             return null;

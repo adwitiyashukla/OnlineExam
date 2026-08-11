@@ -18,11 +18,6 @@ import com.onlineexam.model.Teacher;
 import com.onlineexam.util.PasswordUtil;
 import com.onlineexam.util.WebUtil;
 
-/**
- * Handles login for all three roles (student, teacher, admin). The {@code role}
- * request parameter selects which account table to authenticate against. On
- * success a session is created carrying the role and the user object.
- */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
@@ -32,7 +27,6 @@ public class LoginServlet extends HttpServlet {
     private final TeacherDAO teacherDAO = new TeacherDAO();
     private final AdminDAO adminDAO = new AdminDAO();
 
-    /** Show the login form. */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -43,12 +37,11 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("error", "Please log in to continue.");
         }
         if ("1".equals(request.getParameter("registered"))) {
-            request.setAttribute("info", "Registration successful — please log in.");
+            request.setAttribute("info", "Registration successful, please log in.");
         }
         forwardToForm(request, response);
     }
 
-    /** Process a login attempt. */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,7 +51,7 @@ public class LoginServlet extends HttpServlet {
         String password = WebUtil.clean(request.getParameter("password"));
 
         request.setAttribute("role", role);
-        request.setAttribute("email", email); // preserve entered email on error
+        request.setAttribute("email", email);
 
         if (WebUtil.isBlank(email) || WebUtil.isBlank(password)) {
             request.setAttribute("error", "Email and password are required.");
@@ -90,7 +83,7 @@ public class LoginServlet extends HttpServlet {
                 }
                 break;
             }
-            default: { // student
+            default: {
                 Student s = studentDAO.findByEmail(email);
                 if (s != null && PasswordUtil.verify(password, s.getPassword())) {
                     session.setAttribute("role", "STUDENT");

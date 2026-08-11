@@ -1,6 +1,5 @@
 package com.onlineexam.model;
 
-/** Represents a teacher who creates subjects and questions. */
 public class Teacher {
 
     private int id;

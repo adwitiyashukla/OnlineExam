@@ -15,7 +15,6 @@ import com.onlineexam.model.Result;
 import com.onlineexam.model.Subject;
 import com.onlineexam.model.Teacher;
 
-/** Landing page for a teacher: their subjects, question totals and recent attempts. */
 @WebServlet("/teacher/dashboard")
 public class TeacherDashboardServlet extends HttpServlet {
 

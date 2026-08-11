@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.onlineexam.dao.ResultDAO;
 
-/** Admin view of every quiz attempt in the system. */
 @WebServlet("/admin/results")
 public class AdminResultServlet extends HttpServlet {
 
